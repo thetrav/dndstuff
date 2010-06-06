@@ -45,7 +45,6 @@ public class Main
         final JMenuItem encounter = new JMenuItem(menuLabel);
         encounter.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent arg0)
             {
                 show(widget);

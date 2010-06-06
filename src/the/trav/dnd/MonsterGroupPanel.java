@@ -24,7 +24,6 @@ public class MonsterGroupPanel extends JPanel
         final JButton label = new JButton(buildMonsterGroupLabel(monsters));
         label.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent arg0)
             {
                 if (show)

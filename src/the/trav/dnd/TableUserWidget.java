@@ -26,7 +26,6 @@ public class TableUserWidget extends JPanel
         final JButton go = new JButton("go");
         go.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent e)
             {
                 roll(Integer.valueOf(numTries.getText()));

@@ -53,7 +53,6 @@ public class EncounterWidget extends JPanel
         final JButton generate = new JButton("generate");
         generate.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent arg0)
             {
                 final int num = Integer.parseInt(encounters.getText());
@@ -68,7 +67,6 @@ public class EncounterWidget extends JPanel
         final JButton print = new JButton("print summary");
         print.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent e)
             {
                 printSummary();

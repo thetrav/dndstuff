@@ -33,7 +33,6 @@ public class DiceRollerWidget extends JPanel
         JButton roll = new JButton("roll");
         final JTextArea result = new JTextArea();
         roll.addActionListener(new ActionListener(){
-            @Override
             public void actionPerformed(ActionEvent arg0)
             {
                 result.setText(rollDice(numDice.getText(), diceType.getText()));
