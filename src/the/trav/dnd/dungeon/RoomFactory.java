@@ -1,24 +1,24 @@
 package the.trav.dnd.dungeon;
 
-import the.trav.dnd.dungeon.Room.Contents;
+import the.trav.dnd.dungeon.RoomContents.Contents;
 
 interface RoomFactory
 {
-    Room build();
+    RoomContents build();
    
     static class EmptyRoomFactory implements RoomFactory
     {
-        public Room build()
+        public RoomContents build()
         {
-            return new Room();
+            return new RoomContents();
         }
     }
     
     static class MonsterRoomFactory implements RoomFactory
     {
-        public Room build()
+        public RoomContents build()
         {
-            Room room = new Room();
+            RoomContents room = new RoomContents();
             room.contents.add(Contents.MONSTER);
             return room;
         }
@@ -26,9 +26,9 @@ interface RoomFactory
     
     static class MonsterAndTreasureRoomFactory implements RoomFactory
     {
-        public Room build()
+        public RoomContents build()
         {
-            Room room = new Room();
+            RoomContents room = new RoomContents();
             room.contents.add(Contents.MONSTER);
             room.contents.add(Contents.TREASURE);
             return room;
@@ -37,18 +37,18 @@ interface RoomFactory
     
     static class StairsRoomFactory implements RoomFactory
     {
-        public Room build()
+        public RoomContents build()
         {
-            Room room = new Room();
+            RoomContents room = new RoomContents();
             return room;
         }
     }
     
     static class TrickRoomFactory implements RoomFactory
     {
-        public Room build()
+        public RoomContents build()
         {
-            Room room = new Room();
+            RoomContents room = new RoomContents();
             room.contents.add(Contents.TRAP);
             return room;
         }
@@ -56,9 +56,9 @@ interface RoomFactory
     
     static class TreasureRoomFactory implements RoomFactory
     {
-        public Room build()
+        public RoomContents build()
         {
-            Room room = new Room();
+            RoomContents room = new RoomContents();
             room.contents.add(Contents.TREASURE);
             return room;
         }

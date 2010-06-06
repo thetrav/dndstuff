@@ -28,16 +28,16 @@ import the.trav.dnd.monster.MonsterEntry;
  * 
  * @author travis
  */
-public class EncounterWidget extends JPanel
+public class EncounterWidget extends Widget
 {
-
+    private static final long serialVersionUID = 1L;
     JPanel newEncounterControls = new JPanel();
     JPanel encounterPanel = new JPanel();
     List<List<Monster>> encounters = new LinkedList<List<Monster>>();
 
     public EncounterWidget()
     {
-        super(new BorderLayout());
+        super();
         encounterPanel.setLayout(new BoxLayout(encounterPanel, BoxLayout.Y_AXIS));
 
         // encounterPanel.setBorder(null);
@@ -99,13 +99,6 @@ public class EncounterWidget extends JPanel
         // removeAll();
         //        
         refresh();
-    }
-
-    private void refresh()
-    {
-        invalidate();
-        revalidate();
-        repaint();
     }
 
     private void debug(final List<Monster> monsters)

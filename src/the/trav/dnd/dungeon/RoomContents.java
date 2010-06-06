@@ -1,28 +1,46 @@
 package the.trav.dnd.dungeon;
 
-import the.trav.dnd.dungeon.RoomFactory.EmptyRoomFactory;
-import the.trav.dnd.dungeon.RoomFactory.MonsterAndTreasureRoomFactory;
-import the.trav.dnd.dungeon.RoomFactory.MonsterRoomFactory;
-import the.trav.dnd.dungeon.RoomFactory.StairsRoomFactory;
-import the.trav.dnd.dungeon.RoomFactory.TreasureRoomFactory;
-import the.trav.dnd.dungeon.RoomFactory.TrickRoomFactory;
-import the.trav.dnd.table.DiceTable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class RoomContents extends DiceTable<RoomFactory>
+import the.trav.dnd.monster.Monster;
+import the.trav.dnd.monster.MonsterEntry;
+import the.trav.dnd.treasure.Treasure;
+
+public class RoomContents 
 {
-    public RoomContents()
+	public enum Contents
     {
-        add(new EmptyRoomFactory(), 1, 7);
-        add(new MonsterRoomFactory(), 8, 11);
-        add(new MonsterAndTreasureRoomFactory(), 12, 17);
-        add(new StairsRoomFactory(), 18, 18);
-        add(new TrickRoomFactory(), 19, 19);
-        add(new TreasureRoomFactory(), 20, 20);
+     TRAP, TREASURE, MONSTER   
     }
-
-    @Override
-    protected int getDiceType()
+    
+    public Set<Contents> contents = new HashSet<Contents>();
+    public String trap;
+    public Treasure treasure;
+    
+    public List<Monster> monsters;
+    
+    public String toString()
     {
-        return 20;
+        if(contents.isEmpty())
+        {
+            return "empty room";
+        }
+        StringBuilder sb = new StringBuilder();
+        if(contents.contains(Contents.MONSTER))
+        {
+            MonsterEntry type = monsters.get(0).type;
+            sb.append(monsters.size() + " x " +type.name + " ");
+        }
+        if(contents.contains(Contents.TREASURE))
+        {
+            sb.append(treasure);
+        }
+        if(contents.contains(Contents.TRAP))
+        {
+            sb.append(" TRAPPED!");
+        }
+        return sb.toString();
     }
 }

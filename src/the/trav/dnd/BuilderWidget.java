@@ -6,21 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import the.trav.dnd.table.DiceTable;
-
-public class TableUserWidget extends JPanel
+public class BuilderWidget extends ResultWidget
 {
     private static final long serialVersionUID = 1L;
     JTextArea result;
-    DiceTable<?> table;
+    DiceBuilder<?> table;
 
-    public TableUserWidget(final DiceTable<?> table)
+    public BuilderWidget(final DiceBuilder<?> table)
     {
-        super(new BorderLayout());
+        super();
         final JPanel controls = new JPanel();
         final JTextField numTries = new JTextField("100");
         final JButton go = new JButton("go");
@@ -36,15 +33,6 @@ public class TableUserWidget extends JPanel
         controls.add(go);
         add(controls, BorderLayout.NORTH);
         this.table = table;
-        result = new JTextArea();
-        add(new JScrollPane(result), BorderLayout.CENTER);
-    }
-
-    private void refresh()
-    {
-        invalidate();
-        revalidate();
-        repaint();
     }
 
     private void roll(final Integer tries)
@@ -52,9 +40,8 @@ public class TableUserWidget extends JPanel
         final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tries; i++)
         {
-            sb.append(table.result(Main.dice) + "\n");
+            sb.append(table.build(Main.dice) + "\n");
         }
-        result.setText(sb.toString());
-        refresh();
+        setResult(sb.toString());
     }
 }
