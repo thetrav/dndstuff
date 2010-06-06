@@ -1,0 +1,6 @@
+<the.trav.dnd.monster.MonsterEntry>
+  <name>Doppleganger</name>
+  <hitDice>1</hitDice>
+  <hpMod>1</hpMod>
+  <ac>10</ac>
+</the.trav.dnd.monster.MonsterEntry>

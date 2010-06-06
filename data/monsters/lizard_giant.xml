@@ -1,0 +1,6 @@
+<the.trav.dnd.monster.MonsterEntry>
+  <name>Lizard, giant</name>
+  <hitDice>1</hitDice>
+  <hpMod>1</hpMod>
+  <ac>1</ac>
+</the.trav.dnd.monster.MonsterEntry>

@@ -1,0 +1,6 @@
+<the.trav.dnd.monster.MonsterEntry>
+  <name>Bugbear</name>
+  <hitDice>3</hitDice>
+  <hpMod>0</hpMod>
+  <ac>1</ac>
+</the.trav.dnd.monster.MonsterEntry>
