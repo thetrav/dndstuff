@@ -52,11 +52,9 @@ public class EncounterTable
 
     public List<Monster> generate(final DiceRoller dice, final int dungeonLevel)
     {
-        final int monsterLevelRoll = dice.roll(20);
-        final int encounterRoll = dice.roll(100);
         final DiceTable<DiceTable<EncounterFactory>> dungeonLevelTable = encounters.get(dungeonLevel - 1);
-        final DiceTable<EncounterFactory> monsterLevelTable = dungeonLevelTable.result(monsterLevelRoll);
-        final EncounterFactory encounter = monsterLevelTable.result(encounterRoll);
+        final DiceTable<EncounterFactory> monsterLevelTable = dungeonLevelTable.result(dice);
+        final EncounterFactory encounter = monsterLevelTable.result(dice);
         return encounter.build(dice);
     }
 
@@ -66,6 +64,12 @@ public class EncounterTable
         public void add(final DiceTable<EncounterFactory> encounter, final int low, final int high)
         {
             super.add(encounter, low, high);
+        }
+
+        @Override
+        protected int getDiceType()
+        {
+            return 20;
         }
     }
 }

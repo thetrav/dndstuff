@@ -8,4 +8,10 @@ public class AbstractEncounterTable extends DiceTable<EncounterFactory>
     {
         return new EncounterFactory(type, dice, diceType, diceMod);
     }
+
+    @Override
+    protected int getDiceType()
+    {
+        return 100;
+    }
 }

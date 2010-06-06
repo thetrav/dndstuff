@@ -52,8 +52,7 @@ public class TableUserWidget extends JPanel
         final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tries; i++)
         {
-            final int roll = Main.dice.roll(20);
-            sb.append(table.result(roll) + "\n");
+            sb.append(table.result(Main.dice) + "\n");
         }
         result.setText(sb.toString());
         refresh();
