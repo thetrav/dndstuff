@@ -1,27 +1,36 @@
 package the.trav.dnd.dungeon;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class DungeonRoom
 {
-    public int id;
+    public String id;
     public boolean corridor;
-    public List<DungeonPortal> exits;
-    public RoomContents occupants;
-    public String notes;
-    
-    public DungeonRoom(boolean b)
+    public List<DungeonPortal> exits = new LinkedList<DungeonPortal>();
+    public RoomContents occupants = new RoomContents();
+    public String notes = "";
+
+    public DungeonRoom(final boolean b, final String id)
     {
+        this.id = id;
         corridor = b;
+        notes = "room : " + id;
     }
-    
-    public DungeonRoom()
+
+    public DungeonRoom(final String id)
     {
-        this(false);
+        this(false, id);
     }
 
     public void addNewExit()
     {
         exits.add(new DungeonPortal());
+    }
+
+    @Override
+    public String toString()
+    {
+        return "DungeonRoom[" + id + "]";
     }
 }

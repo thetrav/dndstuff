@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import the.trav.dnd.dice.DiceRoller;
 import the.trav.dnd.dungeon.RoomAssembler;
-import the.trav.dnd.dungeon.RoomContentsTable;
+import the.trav.dnd.dungeon.ui.DungeonWidget;
 
 public class Main
 {
@@ -32,6 +32,7 @@ public class Main
         addWidget(menuBar, "Encounter", new EncounterWidget());
         addWidget(menuBar, "Monsters", new MonsterEntryWidget());
         addWidget(menuBar, "Rooms", new RoomBuilderWidget(new RoomAssembler()));
+        addWidget(menuBar, "Dungeon", new DungeonWidget());
 
         // menuBar.add(menu);
         frame.setJMenuBar(menuBar);
