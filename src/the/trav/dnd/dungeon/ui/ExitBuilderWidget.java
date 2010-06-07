@@ -1,30 +1,34 @@
 package the.trav.dnd.dungeon.ui;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import the.trav.dnd.Widget;
 import the.trav.dnd.dungeon.DungeonPortal;
 import the.trav.dnd.dungeon.DungeonRoom;
 import the.trav.dnd.dungeon.DungeonPortal.Type;
 
-public class ExitBuilderWidget extends Widget
+public class ExitBuilderWidget extends JPanel
 {
     private static final long serialVersionUID = 1L;
     private final ExitListener listener;
 
     public ExitBuilderWidget(final Map<String, DungeonRoom> rooms, final ExitListener listener)
     {
+        super(new FlowLayout());
         this.listener = listener;
         final JComboBox type = new JComboBox(new Type[] { Type.DOOR, Type.CORRIDOR, Type.STAIRCASE });
         add(type);
-        final JTextField exitNotes = new JTextField(10);
+        final JTextField exitNotes = new JTextField("Normal Untrapped Dungeon Door");
         add(exitNotes);
+        add(new JLabel("connects to:"));
         final JComboBox room = new JComboBox(rooms.keySet().toArray());
         add(room);
         final JButton done = new JButton("ok");

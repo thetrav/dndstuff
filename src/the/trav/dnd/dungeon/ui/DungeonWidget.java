@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -49,7 +50,7 @@ public class DungeonWidget extends Widget
 
     JTextArea notes = new JTextArea(15, 20);
     JTextArea occupants = new JTextArea(15, 20);
-    JPanel exits = new JPanel();
+    JPanel exits;
 
     ItemListener levelSelected;
     ItemListener roomSelected;
@@ -61,9 +62,10 @@ public class DungeonWidget extends Widget
     public DungeonWidget()
     {
         super();
+        exits = new JPanel();
+        exits.setLayout(new BoxLayout(exits, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(700, 500));
         createJumpBar();
-
         createRoomPanel();
 
         dungeon = new Dungeon();
@@ -93,19 +95,16 @@ public class DungeonWidget extends Widget
         westPanel.add(roomNotes);
         notesListener = new DocumentListener()
         {
-            @Override
             public void changedUpdate(final DocumentEvent arg0)
             {
                 updateNotes();
             }
 
-            @Override
             public void insertUpdate(final DocumentEvent arg0)
             {
                 updateNotes();
             }
 
-            @Override
             public void removeUpdate(final DocumentEvent arg0)
             {
                 updateNotes();
@@ -195,7 +194,6 @@ public class DungeonWidget extends Widget
         final JButton save = new JButton("save");
         save.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent e)
             {
                 saveDungeon();
@@ -206,7 +204,6 @@ public class DungeonWidget extends Widget
         final JButton load = new JButton("load");
         save.addActionListener(new ActionListener()
         {
-            @Override
             public void actionPerformed(final ActionEvent e)
             {
                 loadDungeon();
@@ -282,7 +279,7 @@ public class DungeonWidget extends Widget
 
     private void buildExitPanel()
     {
-        exits.add(new JLabel("Exits"), BorderLayout.NORTH);
+        exits.add(new JLabel("Exits"));
         for (final DungeonPortal exit : room.exits)
         {
             exits.add(buildExitPanel(exit));
@@ -302,10 +299,9 @@ public class DungeonWidget extends Widget
     {
         final JFrame newExitWindow = new JFrame("Build Exit");
         newExitWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        newExitWindow.setSize(400, 500);
+        newExitWindow.setSize(500, 200);
         final ExitBuilderWidget exitBuilder = new ExitBuilderWidget(level.rooms, new ExitListener()
         {
-            @Override
             public void done(final DungeonPortal exit)
             {
                 room.exits.add(exit);
